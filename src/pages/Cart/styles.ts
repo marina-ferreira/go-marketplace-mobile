@@ -29,6 +29,7 @@ export const Product = styled.View`
 export const ProductImage = styled.Image`
   height: 92px;
   width: 92px;
+  margin-right: 20px;
 `
 
 export const ProductTitleContainer = styled.View`
