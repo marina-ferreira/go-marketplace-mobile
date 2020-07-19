@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import React, { useMemo } from 'react'
+import FeatherIcon from 'react-native-vector-icons/Feather'
 
-import { View } from 'react-native';
+import { View } from 'react-native'
 
 import {
   Container,
@@ -20,23 +20,23 @@ import {
   ActionButton,
   TotalProductsContainer,
   TotalProductsText,
-  SubtotalValue,
-} from './styles';
+  SubtotalValue
+} from './styles'
 
-import { useCart } from '../../hooks/cart';
+import { useCart } from '../../hooks/cart'
 
-import formatValue from '../../utils/formatValue';
+import formatValue from '../../utils/formatValue'
 
 interface Product {
-  id: string;
-  title: string;
-  image_url: string;
-  price: number;
-  quantity: number;
+  id: string
+  title: string
+  image_url: string
+  price: number
+  quantity: number
 }
 
 const Cart: React.FC = () => {
-  const { increment, decrement, products } = useCart();
+  const { increment, decrement, products } = useCart()
 
   function handleIncrement(id: string): void {
     // TODO
@@ -49,14 +49,14 @@ const Cart: React.FC = () => {
   const cartTotal = useMemo(() => {
     // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
 
-    return formatValue(0);
-  }, [products]);
+    return formatValue(0)
+  }, [products])
 
   const totalItensInCart = useMemo(() => {
     // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
 
-    return 0;
-  }, [products]);
+    return 0
+  }, [products])
 
   return (
     <Container>
@@ -66,7 +66,7 @@ const Cart: React.FC = () => {
           keyExtractor={item => item.id}
           ListFooterComponent={<View />}
           ListFooterComponentStyle={{
-            height: 80,
+            height: 80
           }}
           renderItem={({ item }: { item: Product }) => (
             <Product>
@@ -111,7 +111,7 @@ const Cart: React.FC = () => {
         <SubtotalValue>{cartTotal}</SubtotalValue>
       </TotalProductsContainer>
     </Container>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
