@@ -45,23 +45,29 @@ const CartProvider: React.FC = ({ children }) => {
         return
       }
 
+      increment(product.id)
+    },
+    [products]
+  )
+
+  const increment = useCallback(
+    async id => {
+      const product = products.find(item => item.id === id)
+      if (!product) return
+
       const addedProduct = {
-        ...products[productIndex],
-        quantity: products[productIndex].quantity + 1
+        ...product,
+        quantity: product.quantity + 1
       }
 
       const filteredProducts = products.filter(
-        ({ id }) => id !== addedProduct.id
+        item => item.id !== addedProduct.id
       )
 
       setProducts([...filteredProducts, addedProduct])
     },
     [products]
   )
-
-  const increment = useCallback(async id => {
-    // TODO INCREMENTS A PRODUCT QUANTITY IN THE CART
-  }, [])
 
   const decrement = useCallback(async id => {
     // TODO DECREMENTS A PRODUCT QUANTITY IN THE CART
