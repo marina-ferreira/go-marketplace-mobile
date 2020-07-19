@@ -30,7 +30,7 @@ const CartProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      // TODO LOAD ITEMS FROM ASYNC STORAGE
+      await AsyncStorage.getItem('@GoMarketplace:cart')
     }
 
     loadProducts()
@@ -43,8 +43,10 @@ const CartProvider: React.FC = ({ children }) => {
 
       const addedProduct = { ...product, quantity: product.quantity + 1 }
       const filteredProducts = products.filter(item => item.id !== product.id)
+      const newProducts = [...filteredProducts, addedProduct]
 
-      setProducts([...filteredProducts, addedProduct])
+      updateStorage(newProducts)
+      setProducts(newProducts)
     },
     [products]
   )
@@ -62,6 +64,7 @@ const CartProvider: React.FC = ({ children }) => {
           ? [...filteredProducts]
           : [...filteredProducts, removedProduct]
 
+      updateStorage(items)
       setProducts(items)
     },
     [products]
@@ -97,6 +100,10 @@ function useCart(): CartContext {
   }
 
   return context
+}
+
+function updateStorage(cart: Product[]): void {
+  AsyncStorage.setItem('@GoMarketplace:cart', JSON.stringify(cart))
 }
 
 export { CartProvider, useCart }
