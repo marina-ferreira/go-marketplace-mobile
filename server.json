@@ -1,28 +1,52 @@
 {
   "products": [
     {
-      "id": "123",
-      "title": "Nome do produto 01",
-      "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/camiseta-ecommerce.jpg",
-      "price": 50
-    },
-    {
       "id": "1234",
-      "title": "Nome do produto 02",
+      "title": "T-shirt",
       "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/camiseta-ecommerce.jpg",
       "price": 60
     },
     {
-      "id": "12345",
-      "title": "Nome do produto 03",
-      "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/camiseta-ecommerce.jpg",
+      "id": "123345",
+      "title": "Phone",
+      "image_url": "https://source.unsplash.com/jP_aaR1wanE/200",
+      "price": 500
+    },
+    {
+      "id": "12345345",
+      "title": "Camera",
+      "image_url": "https://source.unsplash.com/KsLPTsYaqIQ/200",
       "price": 70
     },
     {
-      "id": "123456",
-      "title": "Nome do produto 04",
-      "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/camiseta-ecommerce.jpg",
+      "id": "123457656",
+      "title": "Skincare",
+      "image_url": "https://source.unsplash.com/j7pKVQrTUsM/200",
       "price": 80
+    },
+    {
+      "id": "2123476856",
+      "title": "Sneakers",
+      "image_url": "https://source.unsplash.com/LxVxPA1LOVM/200",
+      "price": 120
+    },
+    {
+      "id": "2126783456",
+      "title": "Dev Kit",
+      "image_url": "https://source.unsplash.com/-RBuQ2PK_L8/200",
+      "price": 200
+    },
+    {
+      "id": "2123450986",
+      "title": "Watch",
+      "image_url": "https://source.unsplash.com/_E1AMQ35pjw/200",
+      "price": 140
+    },
+    {
+      "id": "2122343456",
+      "title": "Floppy Disks",
+      "image_url": "https://source.unsplash.com/MFLNpz5FZRk/200",
+      "price": 20
     }
   ]
 }
