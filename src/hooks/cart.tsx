@@ -30,7 +30,9 @@ const CartProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      await AsyncStorage.getItem('@GoMarketplace:cart')
+      const storageCart = await AsyncStorage.getItem('@GoMarketplace:cart')
+
+      storageCart && setProducts(JSON.parse(storageCart))
     }
 
     loadProducts()
@@ -43,10 +45,10 @@ const CartProvider: React.FC = ({ children }) => {
 
       const addedProduct = { ...product, quantity: product.quantity + 1 }
       const filteredProducts = products.filter(item => item.id !== product.id)
-      const newProducts = [...filteredProducts, addedProduct]
+      const cart = [...filteredProducts, addedProduct]
 
-      updateStorage(newProducts)
-      setProducts(newProducts)
+      setProducts(cart)
+      updateStorage(cart)
     },
     [products]
   )
@@ -59,13 +61,13 @@ const CartProvider: React.FC = ({ children }) => {
       const filteredProducts = products.filter(item => item.id !== product.id)
       const removedProduct = { ...product, quantity: product.quantity - 1 }
 
-      const items =
+      const cart =
         product.quantity === 1
           ? [...filteredProducts]
           : [...filteredProducts, removedProduct]
 
-      updateStorage(items)
-      setProducts(items)
+      setProducts(cart)
+      updateStorage(cart)
     },
     [products]
   )
@@ -75,7 +77,9 @@ const CartProvider: React.FC = ({ children }) => {
       const productIndex = products.findIndex(({ id }) => id === product.id)
 
       if (productIndex < 0) {
-        setProducts([...products, { ...product, quantity: 1 }])
+        const cart = [...products, { ...product, quantity: 1 }]
+        setProducts(cart)
+        updateStorage(cart)
         return
       }
 
@@ -102,8 +106,8 @@ function useCart(): CartContext {
   return context
 }
 
-function updateStorage(cart: Product[]): void {
-  AsyncStorage.setItem('@GoMarketplace:cart', JSON.stringify(cart))
+async function updateStorage(cart: Product[]): Promise<void> {
+  return AsyncStorage.setItem('@GoMarketplace:cart', JSON.stringify(cart))
 }
 
 export { CartProvider, useCart }
